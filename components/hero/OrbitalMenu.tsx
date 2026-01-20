@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { AppMode, MenuItem } from "@/types";
-import FortlinkAnimate from "../animeted/textFortlink/FortlinkAnimate";
+import FortlinkAnimate from "../animated/textFortlink/FortlinkAnimate";
 
 interface OrbitalMenuProps {
   activeMode: AppMode;
@@ -76,7 +76,7 @@ const OrbitalMenu: React.FC<OrbitalMenuProps> = ({
   }, []);
 
   return (
-    <div className="fixed top-1/2 -right-32 md:-right-40 lg:-right-48 transform -translate-y-1/2 z-50 pointer-events-none transition-all duration-700">
+    <div className="hidden md:block fixed top-1/2 -right-32 md:-right-40 lg:-right-48 transform -translate-y-1/2 z-50 pointer-events-none transition-all duration-700">
       <div className="relative flex justify-center items-center w-87.5 h-87.5 md:w-125 md:h-125 lg:w-170 lg:h-170">
         <div className="absolute inset-0 border-2 border-[#05de31]/70 rounded-full animate-spin-slow"></div>
 
