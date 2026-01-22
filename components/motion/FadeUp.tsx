@@ -3,15 +3,20 @@
 import { motion } from 'framer-motion'
 import { ReactNode } from 'react'
 
-export default function FadeUp({
-  children,
-  delay = 0
-}: {
+interface FadeUpProps {
   children: ReactNode
   delay?: number
-}) {
+  className?: string
+}
+
+export default function FadeUp({
+  children,
+  delay = 0,
+  className
+}: FadeUpProps) {
   return (
     <motion.div
+      className={className}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

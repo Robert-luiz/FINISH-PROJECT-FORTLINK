@@ -1,16 +1,15 @@
 "use client";
 
-import {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useRef, useState } from "react";
 import OrbitalMenu from "./OrbitalMenu";
 import { AppMode, Message } from "@/types";
 import HeroContent from "./HeroContent";
+import FloatingWhatsAppButton from "./whatsapp/FloatingWhatsAppButton";
+import Modal from "./whatsapp/modal/Modal";
+import PreRegistrationForm from "./whatsapp/preRegistration/PreRegistrationForm";
 
-const hero = () => {
-  const [activeMode, setActiveMode] = useState<AppMode>(AppMode.CHAT);
+const Hero = () => {
+  const [activeMode, setActiveMode] = useState<AppMode>(AppMode.SETTINGS);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
@@ -21,6 +20,17 @@ const hero = () => {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const onContractClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedPlan(undefined);
+  };
 
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -46,10 +56,21 @@ const hero = () => {
     const useSearch = activeMode === AppMode.RESEARCH;
   };
 
-  return (
-    <div className="flex min-h-screen w-screen bg-nexus-bg text-slate-100 font-mono relative
-                overflow-y-auto lg:overflow-hidden">
+  const [selectedPlan, setSelectedPlan] = useState<string | undefined>(
+    undefined,
+  );
+  7;
 
+  const handleSelectPlan = (plan: string) => {
+    setSelectedPlan(plan);
+    setIsModalOpen(true);
+  };
+
+  return (
+    <div
+      className="flex min-h-screen w-screen bg-nexus-bg text-slate-100 font-mono relative
+                overflow-y-auto lg:overflow-hidden"
+    >
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#4ade80_0%,transparent_70%)] animate-"></div>
         <div className="absolute top-0 left-0 w-full h-1 bg-nexus-primary animate-scanline"></div>
@@ -59,12 +80,25 @@ const hero = () => {
         <header className="mb-8 pl-4">
           <img className="md:w-60 lg:w-92" src="./logo-fortlink.png" alt="" />
         </header>
-        <HeroContent activeMode={activeMode} />
+        <HeroContent
+          activeMode={activeMode}
+          onContractClick={onContractClick}
+          onSelectPlan={handleSelectPlan}
+        />
       </main>
 
       <OrbitalMenu activeMode={activeMode} onModeChange={setActiveMode} />
+
+      <FloatingWhatsAppButton onClick={() => setIsModalOpen(true)} />
+
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+        <PreRegistrationForm
+          onClose={() => setIsModalOpen(false)}
+          selectedPlan={selectedPlan}
+        />
+      </Modal>
     </div>
   );
 };
 
-export default hero;
+export default Hero;

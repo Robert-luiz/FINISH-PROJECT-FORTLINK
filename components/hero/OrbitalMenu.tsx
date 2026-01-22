@@ -91,6 +91,39 @@ const OrbitalMenu: React.FC<OrbitalMenuProps> = ({
             </p>
           </div>
         </div>
+        {/* ORBITING PARTICLES */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          {/* Orbita externa */}
+          <div className="orbit-slow absolute w-full h-full flex items-center justify-center">
+            <div
+              style={{
+                transform: `translateX(${dimensions.radius}px)`,
+              }}
+              className="
+        w-2.5 h-2.5
+        bg-[#05de31]
+        rounded-full
+        shadow-[0_0_14px_rgba(74,222,128,0.9)]
+      "
+            />
+          </div>
+
+          {/* Orbita interna */}
+          <div className="orbit-fast absolute w-full h-full flex items-center justify-center">
+            <div
+              style={{
+                transform: `translateX(${dimensions.radius - 60}px)`,
+              }}
+              className="
+        w-2 h-2
+        bg-white
+        rounded-full
+        opacity-80
+        shadow-[0_0_8px_rgba(255,255,255,0.6)]
+      "
+            />
+          </div>
+        </div>
 
         <div className="absolute inset-0 flex items-center justify-center">
           {MENU_ITEMS.map((item, index) => {
@@ -109,24 +142,24 @@ const OrbitalMenu: React.FC<OrbitalMenuProps> = ({
                 key={item.id}
                 onClick={() => onModeChange(item.id)}
                 style={{ transform: `translate(${x}px, ${y}px)` }}
-                className={`absolute pointer-events-auto rounded-full transition-all duration-500 group flex items-center justify-center hover:cursor-pointer bg-[#090a19]
-                ${
-                  activeMode === item.id
-                    ? "w-12 h-12 md:w-16 md:h-16 bg-[#05de31] text-nexus-bg scale-110 shadow-[0_0_25px_rgba(74,222,128,0.5)]"
-                    : "w-10 h-10 md:w-12 md:h-12 bg-nexus-surface text-nexus-primary border border-nexus-primary/40 hover:border-nexus-primary hover:bg-nexus-primary/10 hover:scale-[1.01]"
-                }
-                ${
-                  isLogicArray && activeMode !== AppMode.ANALYZE
-                    ? " border-[#05de31] shadow-white"
-                    : ""
-                }
-                }rounded-full z-10`}
+                className={`absolute pointer-events-auto rounded-full z-10
+  transition-all duration-500 group flex items-center justify-center
+  bg-[#090a19]
+
+  ${
+    activeMode === item.id
+      ? "w-12 h-12 md:w-16 md:h-16 bg-[#05de31] text-nexus-bg scale-110 shadow-[0_0_25px_rgba(74,222,128,0.5)]"
+      : "w-10 h-10 md:w-12 md:h-12 bg-nexus-surface text-nexus-primary border border-nexus-primary/40 hover:border-nexus-primary hover:bg-nexus-primary/10 hover:scale-[1.01] cursor-pointer"
+  }
+
+  ${isLogicArray && activeMode !== AppMode.ANALYZE ? "border-[#05de31]" : ""}
+`}
               >
                 <svg
                   className={`w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 transition-colors
                             ${
                               isLogicArray && activeMode !== AppMode.ANALYZE
-                              ? "animate-pulse text-[#05de31] "
+                                ? "animate-pulse text-[#05de31] "
                                 : ""
                             }`}
                   fill="none"

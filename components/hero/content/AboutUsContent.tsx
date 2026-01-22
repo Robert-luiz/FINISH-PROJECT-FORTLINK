@@ -20,8 +20,8 @@ const PRINCIPLES = [
 
 export default function AboutUsContent() {
   return (
-    <div className="w-full relative grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 max-w-200">
-      <div className="relative max-w-105">
+    <div className="w-full relative grid grid-cols-1 xl:grid-cols-[1.1fr_1fr] gap-10 max-w-200">
+      <div className="relative md:max-w-95">
         <div className="absolute -inset-1 rounded-xl bg-nexus-primary/20 blur-xl opacity-25 pointer-events-none" />
 
         <div className="relative rounded-xl border border-[#05de31]/70 shadow-[0_0_20px_rgba(74,222,128,0.35)] bg-black/40 backdrop-blur-md px-5 py-4 space-y-4 lg:space-y-8">
@@ -81,7 +81,7 @@ export default function AboutUsContent() {
           <FadeUp delay={0.4}>
             <div className="border-l-2 border-nexus-primary pl-3 mt-2">
               <p className="text-[13px] font-semibold tracking-wide text-zinc-200">
-                <span className="text-nexus-primary">FORT</span> é compromisso
+                <span className="text-nexus-primary">FORTLINK</span> é compromisso
                 com qualidade e velocidade.
               </p>
             </div>
@@ -90,7 +90,7 @@ export default function AboutUsContent() {
       </div>
 
 
-      <div className="flex flex-col justify-center gap-6 w-full md:max-w-2/3 lg:max-w-full">
+      <div className="flex flex-col justify-center gap-6 w-full md:max-w-95 lg:w-full">
         <p className="hidden lg:block text-[11px] tracking-[0.3em] text-white/40 mb-2">
           NOSSOS PILARES
         </p>
