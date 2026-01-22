@@ -33,7 +33,7 @@ export default function PlansFlex({
 
       <PlanCard
         title="Plano Ultra"
-        speed="1 Giga"
+        speed="1000 Mega"
         price="129,90"
         delay={0.3}
         onSelect={() => onSelectPlan?.("1000")}
@@ -41,7 +41,7 @@ export default function PlansFlex({
 
       <PlanCard
         title="Plano Completo"
-        speed="1 Giga + TV"
+        speed="1000 Mega + TV"
         price="169,90"
         delay={0.4}
         onSelect={() => onSelectPlan?.("1000+tv")}

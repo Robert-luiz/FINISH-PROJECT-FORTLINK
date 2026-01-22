@@ -59,7 +59,6 @@ const Hero = () => {
   const [selectedPlan, setSelectedPlan] = useState<string | undefined>(
     undefined,
   );
-  7;
 
   const handleSelectPlan = (plan: string) => {
     setSelectedPlan(plan);
@@ -68,8 +67,8 @@ const Hero = () => {
 
   return (
     <div
-      className="flex min-h-screen w-screen bg-nexus-bg text-slate-100 font-mono relative
-                overflow-y-auto lg:overflow-hidden"
+      className="flex min-h-screen w-full bg-nexus-bg text-slate-100 font-mono relative
+                overflow-y-auto overflow-x-hidden lg:overflow-hidden"
     >
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#4ade80_0%,transparent_70%)] animate-"></div>

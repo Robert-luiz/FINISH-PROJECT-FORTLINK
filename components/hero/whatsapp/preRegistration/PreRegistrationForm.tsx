@@ -246,13 +246,23 @@ Como conheceu: ${formData.howHeard}
 
         <div>
           <label className={labelBase}>Plano desejado</label>
-          <CustomSelect
-            value={formData.planType}
-            options={planOptions}
-            onChange={(value) =>
-              setFormData((prev) => ({ ...prev, planType: value }))
-            }
-          />
+          {selectedPlan ? (
+            <input
+              value={
+                planOptions.find((p) => p.value === formData.planType)?.label || ""
+              }
+              disabled
+              className={`${inputBase} opacity-70 cursor-not-allowed`}
+            />
+          ) : (
+            <CustomSelect
+              value={formData.planType}
+              options={planOptions}
+              onChange={(value) =>
+                setFormData((prev) => ({ ...prev, planType: value }))
+              }
+            />
+          )}
         </div>
 
         <div>
