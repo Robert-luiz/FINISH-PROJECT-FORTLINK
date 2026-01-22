@@ -8,7 +8,7 @@ interface OrbitalMenuProps {
   onModeChange: (mode: AppMode) => void;
 }
 
-const MENU_ITEMS: MenuItem[] = [
+export const MENU_ITEMS: MenuItem[] = [
   {
     id: AppMode.CHAT,
     label: "SOBRE NÓS",
