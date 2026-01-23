@@ -1,8 +1,12 @@
+"use client";
 import React from "react";
-import { WHATSAPP_LINK } from "../whatsapp/constants/constantWhatsapp";
 import FadeUp from "@/components/motion/FadeUp";
 
-export default function BestPlanContent() {
+interface BestPlanContentProps {
+  onSelectPlan?: (plan: string) => void;
+}
+
+export default function BestPlanContent({ onSelectPlan }: BestPlanContentProps) {
   return (
     <FadeUp className="w-full max-w-md xl:max-w-full mx-auto">
       <div className="
@@ -12,7 +16,6 @@ export default function BestPlanContent() {
         border transition-all duration-300
         border-[#05de31] bg-[#05de31]/10 shadow-[0_0_30px_rgba(74,222,128,0.35)] scale-[1.03]
       ">
-        {/* Badge */}
         <span className="
           w-fit mb-4
           px-3 py-1
@@ -25,16 +28,14 @@ export default function BestPlanContent() {
           PLANO PREMIUM
         </span>
 
-        {/* Título */}
         <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-2">
-          1 Giga <span className="text-[#05de31]">+ TV</span>
+          1000 mega <span className="text-[#05de31]">+ TV</span>
         </h2>
 
         <p className="text-gray-400 text-sm mb-6">
           Máxima velocidade + entretenimento completo para sua casa.
         </p>
 
-        {/* Preço */}
         <div className="flex items-end gap-1 mb-8">
           <span className="text-gray-400 text-base">R$</span>
           <span className="text-5xl font-bold text-white">169</span>
@@ -42,7 +43,6 @@ export default function BestPlanContent() {
           <span className="text-gray-500 text-sm ml-1">/mês</span>
         </div>
 
-        {/* Benefícios */}
         <ul className="space-y-3 mb-8">
           {[
             "1 Giga de Internet Fibra Óptica",
@@ -62,11 +62,8 @@ export default function BestPlanContent() {
           ))}
         </ul>
 
-        {/* CTA */}
-        <a
-          href={WHATSAPP_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={() => onSelectPlan?.("1000+tv")}
           className="
             mt-auto
             w-full
@@ -77,7 +74,7 @@ export default function BestPlanContent() {
           "
         >
           Contratar agora
-        </a>
+        </button>
       </div>
     </FadeUp>
   );

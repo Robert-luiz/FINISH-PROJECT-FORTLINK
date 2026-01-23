@@ -1,5 +1,5 @@
 import FadeUp from "@/components/motion/FadeUp";
-import PlansGrid from "../cardPlans/PlansFlex";
+import PlansFlex from "../cardPlans/PlansFlex";
 
 interface PlansContentProps {
   onSelectPlan?: (plan: string) => void;
@@ -21,7 +21,7 @@ export default function PlansContent({ onSelectPlan }: PlansContentProps) {
         </p>
       </FadeUp>
 
-      <PlansGrid onSelectPlan={onSelectPlan} />
+      <PlansFlex onSelectPlan={onSelectPlan} />
     </div>
   );
 }

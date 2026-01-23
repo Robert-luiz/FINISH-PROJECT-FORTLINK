@@ -157,8 +157,8 @@ Como conheceu: ${formData.howHeard}
   const planOptions = [
     { label: "300 Mega", value: "300" },
     { label: "600 Mega", value: "600" },
-    { label: "1 Giga", value: "1000" },
-    { label: "1 Giga + TV", value: "1000+tv" },
+    { label: "1000 mega", value: "1000" },
+    { label: "1000 mega + TV", value: "1000+tv" },
   ];
 
   const howHeardOptions = [

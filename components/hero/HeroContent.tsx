@@ -41,7 +41,7 @@ export default function HeroContent({
 
       {activeMode === AppMode.ANALYZE && (
         <div className="max-w-xl xl:max-w-2xl">
-          <BestPlanContent />
+          <BestPlanContent onSelectPlan={onSelectPlan} />
         </div>
       )}
     </div>
