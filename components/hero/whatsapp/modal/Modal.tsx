@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 interface ModalProps {
   isOpen: boolean;
@@ -9,21 +9,32 @@ interface ModalProps {
 }
 
 export default function Modal({ isOpen, onClose, children }: ModalProps) {
+  const [mounted, setMounted] = useState(false);
+
+  // 1️⃣ Garante que só renderiza no client
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // 2️⃣ ESC + scroll lock
+  useEffect(() => {
+    if (!mounted || !isOpen) return;
+
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
 
     document.addEventListener("keydown", handleEsc);
-    document.body.style.overflow = isOpen ? "hidden" : "auto";
+    document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("keydown", handleEsc);
       document.body.style.overflow = "auto";
     };
-  }, [isOpen, onClose]);
+  }, [mounted, isOpen, onClose]);
 
-  if (!isOpen) return null;
+  // 3️⃣ Nunca renderiza no SSR
+  if (!mounted || !isOpen) return null;
 
   return (
     <div

@@ -45,7 +45,7 @@ export default function BestPlanContent({ onSelectPlan }: BestPlanContentProps) 
 
         <ul className="space-y-3 mb-8">
           {[
-            "1 Giga de Internet Fibra Óptica",
+            "1000 mega de Internet Fibra Óptica",
             "Pacote de TV incluso",
             "Wi-Fi 6 de Alta Performance",
             "Instalação 100% gratuita",
