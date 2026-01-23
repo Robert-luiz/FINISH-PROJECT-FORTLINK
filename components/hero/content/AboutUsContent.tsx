@@ -1,4 +1,6 @@
+"use client";
 import FadeUp from "@/components/motion/FadeUp";
+import { use } from "react";
 
 const PRINCIPLES = [
   {

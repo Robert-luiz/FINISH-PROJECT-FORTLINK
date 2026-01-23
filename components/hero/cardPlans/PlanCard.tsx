@@ -1,3 +1,4 @@
+"use client";
 import FadeUp from "@/components/motion/FadeUp";
 
 interface PlanCardProps {

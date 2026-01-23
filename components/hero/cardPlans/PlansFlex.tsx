@@ -1,3 +1,4 @@
+"use client";
 import PlanCard from "./PlanCard";
 
 export default function PlansFlex({
