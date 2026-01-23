@@ -106,7 +106,7 @@ const Hero = () => {
 
           <div className="flex items-center gap-4">
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/fortlink_"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-zinc-300 hover:text-white"
