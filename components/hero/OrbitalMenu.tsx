@@ -175,7 +175,7 @@ const OrbitalMenu: React.FC<OrbitalMenuProps> = ({
                 </svg>
 
                 <span
-                  className={`absolute right-full mr-3 px-2 py-1 bg-nexus-primary text-nexus-bg text-[12px] font-bold rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none uppercase tracking-tighter`}
+                  className={`absolute right-full mr-3 px-2 py-1 bg-nexus-primary text-nexus-bg text-[14px] font-bold rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none uppercase tracking-tighter`}
                 >
                   {item.label}
                 </span>
