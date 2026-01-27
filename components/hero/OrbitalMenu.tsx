@@ -86,7 +86,7 @@ const OrbitalMenu: React.FC<OrbitalMenuProps> = ({
           <div className="max-w-30 md:max-w-40">
             <FortlinkAnimate text="FORTLINK" />
             <div className="h-px w-full bg-nexus-primary/30 mb-2"></div>
-            <p className="text-[10px] md:text-sm text-slate-400 leading-tight uppercase font-medium">
+            <p className="text-[14px] md:text-sm text-slate-400 leading-tight uppercase font-medium">
               {MENU_ITEMS.find((i) => i.id === activeMode)?.label}
             </p>
           </div>
