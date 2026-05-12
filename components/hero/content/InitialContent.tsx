@@ -1,5 +1,6 @@
 "use client";
 import FadeUp from "@/components/motion/FadeUp";
+import { LINK_CENTRAL, WEBCHAT_HOST } from "../whatsapp/constants/constantWhatsapp";
 
 interface InitialContentProps {
   onContractClick: () => void;
@@ -30,12 +31,14 @@ export default function InitialContent({
       {/* CTA */}
       <FadeUp delay={0.2}>
         <div className="mt-5 sm:mt-6 flex flex-col md:flex-row sm:items-center gap-3">
-          <button
+          <a
+            href={WEBCHAT_HOST}
+            target="_blank"
             onClick={onContractClick}
             className="w-full md:w-auto flex items-center justify-center rounded-xl px-5 py-3 sm:px-6 bg-[#05de31] text-black text-sm sm:text-base font-semibold tracking-wide transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(74,222,128,0.6)] focus:outline-none"
           >
             Contratar agora
-          </button>
+          </a>
 
           <span className=" text-[10px] sm:text-[11px]text-white/40 text-center sm:text-left">
             Atendimento Humanizado • Instalação rápida
