@@ -1,28 +1,49 @@
 "use client";
-import React from "react";
-import { WhatsAppIcon } from "./inconWhatsapp/WhatsAppIcon";
+import React, { useEffect } from "react";
 
 interface FloatingWhatsAppButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
 }
 
-export default function FloatingWhatsAppButton({ onClick }: FloatingWhatsAppButtonProps) {
+export default function FloatingWhatsAppButton({}: FloatingWhatsAppButtonProps) {
+  useEffect(() => {
+    const globalWindow = window as any;
+
+    // Inicializa a fila do webchat caso não exista
+    globalWindow.webchat = globalWindow.webchat || function() {
+      (globalWindow.webchat.q = globalWindow.webchat.q || []).push(arguments);
+    };
+
+    // Cria e insere a tag script dinamicamente
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = 'https://fortlink.sz.chat/webchat/v2/webchat.js';
+
+    const firstScript = document.getElementsByTagName('script')[0];
+    if (firstScript && firstScript.parentNode) {
+      firstScript.parentNode.insertBefore(script, firstScript);
+    }
+
+    // Configura o widget da Fortlink
+    globalWindow.webchat('cid', '69f3713575ef679905fb6367');
+    globalWindow.webchat('host', 'https://fortlink.sz.chat');
+    globalWindow.webchat('background', '#05de31');
+
+    const handleMessage = (event: MessageEvent) => {
+      if (event.origin !== 'https://fortlink.sz.chat') return;
+    };
+
+    window.addEventListener("message", handleMessage, false);
+
+    // Limpeza ao desmontar o componente
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
+  }, []);
+
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label="Abrir pré-cadastro"
-      className="
-        fixed bottom-6 right-6 z-50
-        w-16 h-16 rounded-full
-        bg-[#05de31]
-        flex items-center justify-center
-        text-nexus-bg
-        shadow-[0_0_25px_rgba(74,222,128,0.5)]
-        hover:scale-110 transition-transform
-      "
-    >
-      <WhatsAppIcon />
-    </button>
+    //   className="
+    null
   );
 }
