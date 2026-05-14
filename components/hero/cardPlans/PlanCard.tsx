@@ -57,13 +57,14 @@ export default function PlanCard({
         {/* CTA */}
         <a
           href={WEBCHAT_HOST}
+          target="_blank"
           onClick={onSelect}
           className={`
-          w-full mt-auto py-3 rounded-xl font-semibold
+          w-full mt-auto py-3 text-center rounded-xl font-semibold
           transition-all duration-300
           ${
             highlight
-              ? "bg-[#05de31] text-black hover:shadow-[0_0_20px_rgba(74,222,128,0.6)]"
+              ? "bg-[#05de31] text-center text-black hover:shadow-[0_0_20px_rgba(74,222,128,0.6)]"
               : "border border-[#05de31]/60 text-[#05de31] hover:bg-[#05de31] hover:text-black"
           }
         `}
