@@ -1,5 +1,6 @@
 "use client";
 import FadeUp from "@/components/motion/FadeUp";
+import { WEBCHAT_HOST } from "../whatsapp/constants/constantWhatsapp";
 
 interface PlanCardProps {
   title: string;
@@ -54,7 +55,8 @@ export default function PlanCard({
         </div>
 
         {/* CTA */}
-        <button
+        <a
+          href={WEBCHAT_HOST}
           onClick={onSelect}
           className={`
           w-full mt-auto py-3 rounded-xl font-semibold
@@ -67,7 +69,7 @@ export default function PlanCard({
         `}
         >
           Contratar agora
-        </button>
+        </a>
       </div>
     </FadeUp>
   );
