@@ -71,14 +71,26 @@ const Hero = () => {
   };
 
   return (
-    <div
-      className="flex flex-col min-h-screen w-full bg-nexus-bg text-slate-100 font-mono relative
-                overflow-y-auto overflow-x-hidden lg:overflow-hidden"
-    >
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
+    <div className="flex flex-col min-h-screen w-full bg-[#050816] text-slate-100 font-mono relative overflow-y-auto overflow-x-hidden lg:overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Glow principal */}
+        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_30%,rgba(5,222,49,0.30),transparent_65%)]" />
+
+        {/* Glow inferior */}
+        <div className="absolute -bottom-50 left-1/2 -translate-x-1/2 w-225 h-125 bg-[#05de31]/10 blur-3xl rounded-full" />
+
+        {/* Grid cyberpunk */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-size-[40px_40px]" />
+
+        {/* Scanline */}
+        <div className="absolute top-0 left-0 w-full h-0.5 bg-[#05de31]/40 animate-scanline" />
+      </div>
+
+      {/* <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#4ade80_0%,transparent_70%)] animate-"></div>
         <div className="absolute top-0 left-0 w-full h-1 bg-nexus-primary animate-scanline"></div>
-      </div>
+        </div> */}
 
       <main className="flex-1 max-w-275 p-6 md:p-12 flex flex-col z-10 h-full gap-10">
         <header className="mb-8 pl-4 flex flex-col md:flex-row justify-between lg:justify-start lg:gap-12 xl:justify-around items-center gap-6 md:gap-0">
@@ -204,10 +216,10 @@ const Hero = () => {
 
       {/* <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         <PreRegistrationForm
-          onClose={() => setIsModalOpen(false)}
-          selectedPlan={selectedPlan}
+        onClose={() => setIsModalOpen(false)}
+        selectedPlan={selectedPlan}
         />
-      </Modal> */}
+        </Modal> */}
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
@@ -241,11 +253,11 @@ const Hero = () => {
                 setIsMobileMenuOpen(false);
               }}
               className={`text-2xl font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-3
-                ${
-                  activeMode === item.id
-                    ? "text-[#05de31] scale-110"
-                    : "text-white/60 hover:text-white"
-                }
+              ${
+                activeMode === item.id
+                  ? "text-[#05de31] scale-110"
+                  : "text-white/60 hover:text-white"
+              }
               `}
             >
               {item.label}
