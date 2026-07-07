@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Portal FortLink",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#0d47a1",
+    background_color: "#020e24",
+    theme_color: "#020e24",
     orientation: "portrait",
     icons: [
       {
