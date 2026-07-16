@@ -80,3 +80,21 @@ body {
   animation: orbit 10s linear infinite reverse;
 }
 
+@keyframes labelLoop {
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 0.35;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-label-loop {
+  animation: labelLoop 2.8s ease-in-out infinite;
+}
