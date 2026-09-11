@@ -117,7 +117,7 @@ const TEAM = [
       {
         name: "ALEXANDRE",
         role: "",
-        photo: "./AlexandreAlves.jpg",
+        photo: "/AlexandreAlves.jpg",
       },
     ],
   },
@@ -142,7 +142,7 @@ const TEAM = [
       {
         name: "LEANDRO",
         role: "Supervisor",
-        photo: "./Leandro.jpg",
+        photo: "/Leandro.jpg",
       },
     ],
   },
@@ -171,12 +171,12 @@ const TEAM = [
       {
         name: "WESLLEN",
         role: "Líder Suporte Técnico",
-        photo: "./Wesllen.jpg",
+        photo: "/Wesllen.jpg",
       },
       {
         name: "BARBARA",
         role: "Líder Comercial",
-        photo: "./Barbara.jpg",
+        photo: "/Barbara.jpg",
       },
     ],
   },
@@ -202,17 +202,17 @@ const TEAM = [
       {
         name: "ALESSANDRA",
         role: "Atendente Comercial",
-        photo: "./Alessandra.jpg",
+        photo: "/Alessandra.jpg",
       },
       {
         name: "ANDREZA",
         role: "Atendente Comercial",
-        photo: "./Andreza.jpg",
+        photo: "/Andreza.jpg",
       },
       {
         name: "GRACY",
         role: "Atendente Comercial",
-        photo: "./Gracy.jpg",
+        photo: "/Gracy.jpg",
       },
     ],
   },
@@ -235,17 +235,17 @@ const TEAM = [
       {
         name: "ROBERT",
         role: "Atendente de Suporte",
-        photo: "Robert.jpg",
+        photo: "/Robert.jpg",
       },
       {
         name: "JIM",
         role: "Atendente de Suporte",
-        photo: "Jim.jpg",
+        photo: "/Jim.jpg",
       },
       {
         name: "VITORIA",
         role: "Atendente de Suporte",
-        photo: "Vitoria.jpg",
+        photo: "/Vitoria.jpg",
       },
     ],
   },
@@ -272,32 +272,32 @@ const TEAM = [
       {
         name: "DOUGLAS",
         role: "Técnico de Rede",
-        photo: "./Douglas.jpg",
+        photo: "/Douglas.jpg",
       },
       {
         name: "LUCAS SANTOS",
         role: "Técnico de Rede",
-        photo: "./Lucas.jpg",
+        photo: "/Lucas.jpg",
       },
       {
         name: "EVERTON",
         role: "Técnico de Fibra Óptica",
-        photo: "./Everton.jpg",
+        photo: "/Everton.jpg",
       },
       {
         name: "LUCAS ALMEIDA",
         role: "Técnico de Fibra Óptica",
-        photo: "./LucasAlmeida.jpg",
+        photo: "/LucasAlmeida.jpg",
       },
       {
         name: "EDUARDO",
         role: "Técnico de Fibra Óptica",
-        photo: "./Eduardo.jpg",
+        photo: "/Eduardo.jpg",
       },
       {
         name: "JONATAS",
         role: "Técnico de Fibra Óptica",
-        photo: "./Jonatas.jpg",
+        photo: "/Jonatas.jpg",
       },
     ],
   },
@@ -323,7 +323,7 @@ const TEAM = [
       {
         name: "JUSLEY",
         role: "Responsável pelo Estoque",
-        photo: "./Jusley.jpg",
+        photo: "/Jusley.jpg",
       },
     ],
   },
