@@ -20,7 +20,7 @@ export default function HeroContent({
   return (
     <div className="w-full relative z-10">
       {activeMode === AppMode.CHAT && (
-        <div className="flex items-center max-w-6xl">
+        <div className="flex items-center w-full tablet:max-w-1/2 notebook:max-w-xl desktop:max-w-5xl">
           <div className="w-full ">
             <AboutUsContent />
           </div>

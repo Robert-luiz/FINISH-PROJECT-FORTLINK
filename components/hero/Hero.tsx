@@ -12,6 +12,8 @@ import {
   WHATSAPP_LINK,
 } from "./whatsapp/constants/constantWhatsapp";
 
+import { AnimatePresence, motion } from "framer-motion";
+
 const Hero = () => {
   const [activeMode, setActiveMode] = useState<AppMode>(AppMode.SETTINGS);
   const [messages, setMessages] = useState<Message[]>([
@@ -24,6 +26,15 @@ const Hero = () => {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+
+  const [showMoreInfo, setShowMoreInfo] = useState(true);
+  const moreInfoRef = useRef<HTMLDivElement>(null);
+  const handleMoreInfo = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -44,6 +55,25 @@ const Hero = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages, isTyping]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const pageHeight = document.documentElement.scrollHeight;
+
+      const isAtBottom = scrollPosition >= pageHeight - 20;
+
+      setShowMoreInfo(!isAtBottom);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleSend = async () => {
     if (!inputValue.trim()) return;
@@ -71,26 +101,15 @@ const Hero = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen w-full bg-[#050816] text-slate-100 font-mono relative overflow-y-auto overflow-x-hidden lg:overflow-hidden">
-      {/* Background Effects */}
+    <div className="flex flex-col min-h-screen w-full bg-[#050816] text-slate-100 font-mono relative overflow-y-auto overflow-x-hidden">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Glow principal */}
         <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_30%,rgba(5,222,49,0.30),transparent_65%)]" />
-
-        {/* Glow inferior */}
         <div className="absolute -bottom-50 left-1/2 -translate-x-1/2 w-225 h-125 bg-[#05de31]/10 blur-3xl rounded-full" />
 
-        {/* Grid cyberpunk */}
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-size-[40px_40px]" />
 
-        {/* Scanline */}
         <div className="absolute top-0 left-0 w-full h-0.5 bg-[#05de31]/40 animate-scanline" />
       </div>
-
-      {/* <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#4ade80_0%,transparent_70%)] animate-"></div>
-        <div className="absolute top-0 left-0 w-full h-1 bg-nexus-primary animate-scanline"></div>
-        </div> */}
 
       <main className="flex-1 max-w-275 p-6 md:p-12 flex flex-col z-10 h-full gap-10">
         <header className="mb-8 pl-4 flex flex-col md:flex-row justify-between lg:justify-start lg:gap-12 xl:justify-around items-center gap-6 md:gap-0">
@@ -101,7 +120,7 @@ const Hero = () => {
               alt=""
             />
             <button
-              className="md:hidden p-2 text-[#05de31] hover:bg-white/5 rounded-lg transition-colors"
+              className="md:hidden fixed top-5 right-5 z-50 p-2.5 text-[#05de31] bg-[#050816]/80 backdrop-blur-md border border-[#05de31]/30 hover:bg-[#05de31]/10 rounded-xl transition-all duration-300"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Abrir Menu"
             >
@@ -214,14 +233,6 @@ const Hero = () => {
 
       <FloatingWhatsAppButton onClick={() => setIsModalOpen(true)} />
 
-      {/* <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <PreRegistrationForm
-        onClose={() => setIsModalOpen(false)}
-        selectedPlan={selectedPlan}
-        />
-        </Modal> */}
-
-      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-[#090a19]/95 backdrop-blur-md flex flex-col items-center justify-center gap-8 md:hidden animate-in fade-in duration-200">
           <button
@@ -363,6 +374,78 @@ const Hero = () => {
           </div>
         </div>
       </footer>
+
+      <AnimatePresence>
+        {showMoreInfo && (
+          <motion.div
+            className="hidden md:flex fixed bottom-6 left-1/2 -translate-x-1/2 z-40"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeInOut",
+            }}
+          >
+            <motion.button
+              type="button"
+              onClick={handleMoreInfo}
+              aria-label="Ver mais informações"
+              className="group flex flex-col items-center gap-2 cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.span
+                className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-semibold text-[#05de31]"
+                animate={{
+                  textShadow: [
+                    "0 0 4px rgba(5,222,49,0.3)",
+                    "0 0 12px rgba(5,222,49,0.8)",
+                    "0 0 4px rgba(5,222,49,0.3)",
+                  ],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                Mais informações
+              </motion.span>
+
+              <motion.div
+                animate={{
+                  y: [0, 6, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#05de31"
+                  strokeWidth="1.8"
+                  className="w-5 h-5"
+                  style={{
+                    filter: "drop-shadow(0 0 6px rgba(5,222,49,0.8))",
+                  }}
+                >
+                  <path d="M12 5v14" strokeLinecap="round" />
+
+                  <path
+                    d="M6 13l6 6 6-6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </motion.div>
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
